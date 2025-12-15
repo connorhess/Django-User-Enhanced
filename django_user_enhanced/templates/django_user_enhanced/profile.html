@@ -1,0 +1,37 @@
+{% extends "django_user_enhanced/base.html" %}
+
+{% block title %}Profile - Django User Enhanced{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>User Profile</h1>
+        
+        <div class="profile-info">
+            <div class="profile-field">
+                <label>Username:</label>
+                <span>{{ user.username }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Email:</label>
+                <span>{{ user.email }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Date Joined:</label>
+                <span>{{ user.date_joined|date:"F d, Y" }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Last Login:</label>
+                <span>{{ user.last_login|date:"F d, Y H:i" }}</span>
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <a href="{% url 'django_user_enhanced:password_reset' %}" class="btn btn-secondary">Change Password</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

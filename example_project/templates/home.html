@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Django User Enhanced Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .user-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Welcome to Django User Enhanced!</h1>
+        
+        {% if user.is_authenticated %}
+            <p>Hello, <strong>{{ user.username }}</strong>! You are logged in.</p>
+            <div class="links">
+                <a href="{% url 'django_user_enhanced:profile' %}" class="btn">View Profile</a>
+                <a href="{% url 'django_user_enhanced:logout' %}" class="btn">Logout</a>
+                <a href="/admin/" class="btn">Admin Panel</a>
+            </div>
+        {% else %}
+            <p>This example project demonstrates Django User Enhanced, a simple authentication module for Django.</p>
+            <div class="links">
+                <a href="{% url 'django_user_enhanced:login' %}" class="btn">Login</a>
+                <a href="{% url 'django_user_enhanced:register' %}" class="btn">Register</a>
+            </div>
+        {% endif %}
+        
+        <div class="user-info">
+            <p style="font-size: 14px; opacity: 0.8;">
+                Django User Enhanced provides ready-to-use authentication pages with minimal setup.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

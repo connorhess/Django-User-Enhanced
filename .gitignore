@@ -205,3 +205,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Example project artifacts
+example_project/db.sqlite3
+example_project/staticfiles/
