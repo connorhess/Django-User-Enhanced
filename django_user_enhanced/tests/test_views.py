@@ -63,6 +63,9 @@ class AuthenticationViewsTestCase(TestCase):
         )
         self.assertEqual(User.objects.count(), user_count_before + 1)
         self.assertTrue(User.objects.filter(username='newuser').exists())
+        # Verify email was saved
+        new_user = User.objects.get(username='newuser')
+        self.assertEqual(new_user.email, 'newuser@example.com')
     
     def test_profile_view_requires_login(self):
         """Test that profile view requires authentication"""

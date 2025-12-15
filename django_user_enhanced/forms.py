@@ -43,6 +43,14 @@ class EnhancedUserCreationForm(UserCreationForm):
             'class': 'form-control',
             'placeholder': 'Confirm Password'
         })
+    
+    def save(self, commit=True):
+        """Save the user with email"""
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
 
 class EnhancedAuthenticationForm(AuthenticationForm):
